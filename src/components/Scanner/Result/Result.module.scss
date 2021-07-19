@@ -1,0 +1,16 @@
+.resultContainer {
+	z-index: 105;
+	background-color: white;
+	border-radius: 3px;
+	max-width: 600px;
+	margin: 1rem auto;
+	padding: 1rem;
+	// position: fixed;
+	// bottom: 0;
+	align-self: center;
+	h4 {
+		color: red;
+	}
+	.detailsContainer {
+	}
+}
