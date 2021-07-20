@@ -8,8 +8,8 @@ const Main = () => {
 
 	return (
 		<div>
-			{/* <Scanner onScan={setBarcode} /> */}
 			<Result barcode={8480000202109} />
+			<Scanner onScan={setBarcode} />
 		</div>
 	);
 };
