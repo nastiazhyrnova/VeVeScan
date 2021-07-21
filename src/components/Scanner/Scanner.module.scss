@@ -5,8 +5,8 @@
 	bottom: 0;
 	right: 0;
 	padding: 1rem;
-	min-width: 100%;
-	min-height: 100%;
+	width: 100vw;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -19,16 +19,16 @@
 		flex-direction: column;
 		align-items: center;
 		flex: 1;
+		margin: 1rem;
 		.frame {
+			// height: 100%;
+			// width: 100%;
 			flex: 1;
-			height: 400px;
-			width: 400px;
 		}
 		p {
 			color: white;
 			flex: 1;
 			align-self: center;
-			font-style: italic;
 			margin: auto;
 			font-size: 1.2rem;
 		}
