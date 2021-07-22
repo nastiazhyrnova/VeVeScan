@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
 import { isVegan, isVegetarian } from '../../../utilities/checkProducts';
-import trueIcon from '../../../assets/true.svg';
-import falseIcon from '../../../assets/false.svg';
-import maybeIcon from '../../../assets/maybe.svg';
-import styles from './Result.module.scss';
+import rightIcon from '../../../assets/icons/right.svg';
+import wrongIcon from '../../../assets/icons/wrong.svg';
+import warningIcon from '../../../assets/icons/warnning.svg';
+import unknownIcon from '../../../assets/icons/unknown.svg';
 
 const Result = props => {
 	const [product, setProduct] = useState(null);
@@ -39,30 +39,21 @@ const Result = props => {
 
 	if (product) {
 		output = (
-			<div className={styles.wrapper}>
-				<div className={styles.resultContainer}>
-					<div className={styles.imgContainer}>
-						<img
-							src={product.image_front_small_url}
-							alt='text'
-							height='100px'
-						/>
-					</div>
-					<div className={styles.detailsContainer}>
-						<h4>
-							{product.product_name} "{product.brands}"
-						</h4>
-						<div>
-							{vegan === 'yes' && (
-								<img src={trueIcon} alt='Vegan' height='50px' />
-							)}
-							{vegan === 'no' && (
-								<img src={falseIcon} alt='Not Vegan' height='50px' />
-							)}
-							{(vegan === 'maybe' || vegan === 'unknown') && (
-								<img src={maybeIcon} alt='Maybe or unknown' height='50px' />
-							)}
-						</div>
+			<div className='result'>
+				<div className=''>
+					<img src={product.image_front_small_url} alt='text' />
+				</div>
+				<div className='detailsContainer'>
+					<h4>
+						{product.product_name} "{product.brands}"
+					</h4>
+					<div className='iconsContainer'>
+						{vegan === 'yes' && <img src={rightIcon} alt='Vegan' />}
+						{vegan === 'no' && <img src={wrongIcon} alt='Not Vegan' />}
+						{vegan === 'maybe' && <img src={warningIcon} alt='Maybe vegan' />}
+						{vegan === 'unknown' && (
+							<img src={unknownIcon} alt='Vegan status unknown' />
+						)}
 					</div>
 				</div>
 			</div>

@@ -1,0 +1,49 @@
+.scanner__marker-container {
+	z-index: 100;
+	width: 100vw;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	padding: 0;
+	margin: 0rem;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.5;
+	.scanner__marker-container__frame {
+		flex: 1;
+		width: 50px;
+	}
+	p {
+		color: white;
+		flex: 1;
+		align-self: center;
+		margin: auto;
+		font-size: 1.2rem;
+	}
+}
+.scanner__marker-container__white-logo {
+	flex: 1;
+	height: 70px;
+	width: 70px;
+	opacity: 0.25;
+	position: fixed;
+	bottom: 0;
+}
+
+.scanner__video {
+	video {
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		min-width: 100%;
+		min-height: 100%;
+	}
+}

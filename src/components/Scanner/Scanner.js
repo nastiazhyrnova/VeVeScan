@@ -3,7 +3,6 @@ import Quagga from 'quagga';
 
 import frame from '../../assets/frame.svg';
 import whiteLogo from '../../assets/logo-white.svg';
-import styles from './Scanner.module.scss';
 
 const Scanner = props => {
 	const onDetected = result => {
@@ -26,7 +25,7 @@ const Scanner = props => {
 					inputStream: {
 						name: 'Live',
 						type: 'LiveStream',
-						target: document.querySelector('#video'),
+						target: document.querySelector('.scanner__video'),
 						constraints: {
 							facingMode: 'environment',
 						},
@@ -53,19 +52,21 @@ const Scanner = props => {
 
 	return (
 		<>
-			<div className={styles.scannerContainer}>
-				<div className={styles.markerContainer}>
-					<img
-						src={frame}
-						alt='Frame to scan the barcode'
-						className={styles.frame}
-					/>
-					<div></div>
-					<p>Escanea el código de barras</p>
-				</div>
-				<img src={whiteLogo} alt='Logo' className={styles.whiteLogo} />
+			<div className='scanner__marker-container'>
+				<img
+					src={frame}
+					alt='Frame to scan the barcode'
+					className='scanner__marker-container__frame'
+				/>
+				<div></div>
+				<p>Escanea el código de barras</p>
 			</div>
-			<div id='video'>
+			<img
+				src={whiteLogo}
+				alt='Logo'
+				className='scanner__marker-container__white-logo'
+			/>
+			<div className='scanner__video'>
 				<video />
 			</div>
 		</>
