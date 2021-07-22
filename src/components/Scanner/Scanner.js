@@ -62,7 +62,7 @@ const Scanner = props => {
 					<img
 						src={frame}
 						alt='Frame to scan the barcode'
-						className='scanner__marker-container__frame'
+						className='scanner__marker-container__frame-container__frame'
 					/>
 					<div></div>
 					<p>Escanea el código de barras</p>

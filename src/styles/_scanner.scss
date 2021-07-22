@@ -15,21 +15,21 @@
 	align-items: center;
 	justify-content: space-around;
 	opacity: 0.5;
-	.scanner__marker-container__white-logo {
+	&__white-logo {
 		flex: 1;
 		height: 70px;
 		width: 70px;
 		opacity: 0.25;
 	}
-	.scanner__marker-container__frame-container {
+	&__frame-container {
 		flex: 3;
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		.scanner__marker-container__frame {
+		&__frame {
 			padding: 1rem;
-			width: 90%;
+			// width: 90%;
 			max-width: 500px;
 			margin: 0 auto;
 		}

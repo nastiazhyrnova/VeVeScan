@@ -1,0 +1,14 @@
+.result {
+	position: relative;
+	height: 100vh;
+	overflow: hidden;
+	&__card {
+		bottom: 0;
+	}
+	&__info {
+		padding: 1rem;
+		&__btn {
+			width: 100%;
+		}
+	}
+}

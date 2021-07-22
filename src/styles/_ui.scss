@@ -1,0 +1,33 @@
+@use '../index.scss';
+
+.card-container {
+	position: fixed;
+	z-index: 110;
+	left: 0;
+	background-color: var(--white-color);
+	margin: 1rem;
+	width: calc(100vw - 2rem);
+	border-radius: $border-radius;
+	padding: 0;
+	filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.15));
+}
+.header-container {
+	background: var(--gradient-green);
+	border-radius: $border-radius $border-radius 0 0;
+	margin: 0;
+	text-align: center;
+	color: var(--white-color);
+	padding: 1rem;
+}
+.btn {
+	border-radius: $border-radius;
+	padding: 1rem;
+	outline: none;
+	border: none;
+	background-color: var(--mid-green-color);
+	color: white;
+	cursor: pointer;
+	&:hover {
+		background: var(--gradient-green);
+	}
+}

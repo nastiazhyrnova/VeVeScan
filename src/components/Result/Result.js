@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
 
-import { isVegan, isVegetarian } from '../../../utilities/checkProducts';
-import rightIcon from '../../../assets/icons/right.svg';
-import wrongIcon from '../../../assets/icons/wrong.svg';
-import warningIcon from '../../../assets/icons/warnning.svg';
-import unknownIcon from '../../../assets/icons/unknown.svg';
+import Card from '../UI/Card';
+import Header from '../UI/Header';
+import Button from '../UI/Button';
+
+import { isVegan, isVegetarian } from '../../utilities/checkProducts';
+import rightIcon from '../../assets/icons/right.svg';
+import wrongIcon from '../../assets/icons/wrong.svg';
+import warningIcon from '../../assets/icons/warnning.svg';
+import unknownIcon from '../../assets/icons/unknown.svg';
 
 const Result = props => {
 	const [product, setProduct] = useState(null);
@@ -36,6 +40,29 @@ const Result = props => {
 
 	console.log(`Vegan state is ${vegan}`);
 	console.log(`Vegetarian state is ${vegetarian}`);
+	const newOut = (
+		<div className='result'>
+			<Card className='result__card'>
+				<Header>
+					<h3>{product.product_name}</h3>
+					<p>{product.brands}</p>
+				</Header>
+				<div className='result__info'>
+					<div className='result__info__check'>
+						<div className='result__info__check__vegan'>
+							<span className='result__info__check__vegan__wrong'>Content</span>
+						</div>
+						<div className='result__info__check__vegetarian'>
+							<span className='result__info__check__vegatarian__warning'></span>
+						</div>
+					</div>
+					<Button className='result__info__btn' onClick={_ => {}}>
+						<p>Ingredientes →</p>
+					</Button>
+				</div>
+			</Card>
+		</div>
+	);
 
 	if (product) {
 		output = (
@@ -60,7 +87,7 @@ const Result = props => {
 		);
 	}
 
-	return <>{output}</>;
+	return <>{newOut}</>;
 };
 
 export default Result;
