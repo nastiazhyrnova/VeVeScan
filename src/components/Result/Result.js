@@ -40,29 +40,58 @@ const Result = props => {
 
 	console.log(`Vegan state is ${vegan}`);
 	console.log(`Vegetarian state is ${vegetarian}`);
-	const newOut = (
-		<div className='result'>
-			<Card className='result__card'>
-				<Header>
-					<h3>{product.product_name}</h3>
-					<p>{product.brands}</p>
-				</Header>
-				<div className='result__info'>
-					<div className='result__info__check'>
-						<div className='result__info__check__vegan'>
-							<span className='result__info__check__vegan__wrong'>Content</span>
-						</div>
-						<div className='result__info__check__vegetarian'>
-							<span className='result__info__check__vegatarian__warning'></span>
-						</div>
-					</div>
-					<Button className='result__info__btn' onClick={_ => {}}>
-						<p>Ingredientes →</p>
-					</Button>
-				</div>
-			</Card>
-		</div>
+
+	const getIcon = (dietState, dietName) => (
+		<>
+			{dietState === 'yes' && <img src={rightIcon} alt={dietName} />}
+			{dietState === 'no' && <img src={wrongIcon} alt={`No ${dietName}`} />}
+			{dietState === 'maybe' && (
+				<img src={warningIcon} alt={`Quizás ${dietName}`} />
+			)}
+			{dietState === 'unknown' && (
+				<img src={unknownIcon} alt={`${dietName}: estado desconocido`} />
+			)}
+		</>
 	);
+
+	let newOut = '';
+	if (product) {
+		newOut = (
+			<div className='result'>
+				<Card className='result__card'>
+					<Header>
+						<h3>{product.product_name}</h3>
+						<p>{product.brands}</p>
+					</Header>
+					<div className='result__info'>
+						<div className='result__info__check'>
+							<div className='result__info__check__item'>
+								{getIcon(vegan, 'Vegano')}
+								<p className={`${vegan}`}>Vegano</p>
+							</div>
+							<div className='result__info__check__item'>
+								{getIcon(vegetarian, 'Vegatariano')}
+								<p className={`${vegetarian}`}>Vegetariano</p>
+							</div>
+						</div>
+						<div className='result__info__ingredients'>
+							<ul>
+								<li>Ingredient</li>
+								<li>Ingredient</li>
+							</ul>
+							<ul>
+								<li>Ingredient</li>
+								<li>Ingredient</li>
+							</ul>
+						</div>
+						<Button className='result__info__btn' onClick={_ => {}}>
+							<p>Ingredientes →</p>
+						</Button>
+					</div>
+				</Card>
+			</div>
+		);
+	}
 
 	if (product) {
 		output = (

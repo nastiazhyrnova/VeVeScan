@@ -68,7 +68,6 @@ p {
   font-size: 1rem;
 }
 
-@use '../index.scss';
 .card-container {
   position: fixed;
   z-index: 110;
@@ -196,6 +195,56 @@ p {
 
 .result__info {
   padding: 1rem;
+}
+
+.result__info__check {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.result__info__check__item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.result__info__check__item p {
+  margin: 0 0 0 0.5rem;
+}
+
+.result__info__check__item p--yes {
+  color: var(--mid-green-color);
+}
+
+.result__info__check__item img {
+  height: 1rem;
+}
+
+.result__info__ingredients {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.result__info__ingredients ul {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.result__info__ingredients ul li {
+  font-size: 0.75rem;
 }
 
 .result__info__btn {

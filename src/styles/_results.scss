@@ -7,6 +7,36 @@
 	}
 	&__info {
 		padding: 1rem;
+		&__check {
+			display: flex;
+			margin-bottom: 1rem;
+			&__item {
+				flex: 1;
+				display: flex;
+				align-items: center;
+				p {
+					margin: 0 0 0 0.5rem;
+					&--yes {
+						color: var(--mid-green-color);
+					}
+				}
+				img {
+					height: 1rem;
+				}
+			}
+		}
+		&__ingredients {
+			display: flex;
+			margin-bottom: 1rem;
+			ul {
+				flex: 1;
+				list-style: none;
+				padding-left: 1.5rem;
+				li {
+					font-size: 0.75rem;
+				}
+			}
+		}
 		&__btn {
 			width: 100%;
 		}
