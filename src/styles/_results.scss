@@ -16,9 +16,18 @@
 				align-items: center;
 				p {
 					margin: 0 0 0 0.5rem;
-					&--yes {
-						color: var(--mid-green-color);
-					}
+				}
+				.yes {
+					color: var(--mid-green-color);
+				}
+				.no {
+					color: var(--red-color);
+				}
+				.maybe {
+					color: var(--yellow-color);
+				}
+				.unknown {
+					color: var(--mid-grey-color);
 				}
 				img {
 					height: 1rem;
@@ -31,12 +40,24 @@
 			ul {
 				flex: 1;
 				list-style: none;
-				padding-left: 1.5rem;
+				padding-left: 0rem;
 				li {
 					font-size: 0.75rem;
+					img {
+						height: 0.5rem;
+					}
 				}
 			}
 		}
+		&__btn {
+			width: 100%;
+		}
+	}
+	&__error {
+		color: var(--red-color);
+		text-align: center;
+		padding: 1rem;
+		text-transform: capitalize;
 		&__btn {
 			width: 100%;
 		}

@@ -1,22 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Quagga from 'quagga';
 
 import frame from '../../assets/frame.svg';
 import whiteLogo from '../../assets/logo-white.svg';
 
 const Scanner = props => {
-	const onDetected = result => {
-		Quagga.offDetected(onDetected);
-
-		const barcode = result.codeResult.code;
-
-		// validation if necessary
-		// try to fetch data
-		//  if not
-		// alert('Could not read the barcode, please try again')
-		props.onScan(barcode);
-		// alert(barcode);
+	const getBarcode = result => {
+		Quagga.offDetected(getBarcode);
+		props.deactivateScanner();
+		props.onScan(result.codeResult.code);
 	};
+
+	const { scannerActive } = props;
 
 	useEffect(() => {
 		if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -45,10 +40,10 @@ const Scanner = props => {
 					Quagga.start();
 				},
 
-				Quagga.onDetected(onDetected)
+				Quagga.onDetected(getBarcode)
 			);
 		}
-	}, []);
+	}, [scannerActive]);
 
 	return (
 		<>

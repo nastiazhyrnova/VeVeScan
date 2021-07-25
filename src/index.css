@@ -220,8 +220,20 @@ p {
   margin: 0 0 0 0.5rem;
 }
 
-.result__info__check__item p--yes {
+.result__info__check__item .yes {
   color: var(--mid-green-color);
+}
+
+.result__info__check__item .no {
+  color: var(--red-color);
+}
+
+.result__info__check__item .maybe {
+  color: var(--yellow-color);
+}
+
+.result__info__check__item .unknown {
+  color: var(--mid-grey-color);
 }
 
 .result__info__check__item img {
@@ -240,14 +252,29 @@ p {
       -ms-flex: 1;
           flex: 1;
   list-style: none;
-  padding-left: 1.5rem;
+  padding-left: 0rem;
 }
 
 .result__info__ingredients ul li {
   font-size: 0.75rem;
 }
 
+.result__info__ingredients ul li img {
+  height: 0.5rem;
+}
+
 .result__info__btn {
+  width: 100%;
+}
+
+.result__error {
+  color: var(--red-color);
+  text-align: center;
+  padding: 1rem;
+  text-transform: capitalize;
+}
+
+.result__error__btn {
   width: 100%;
 }
 /*# sourceMappingURL=index.css.map */
