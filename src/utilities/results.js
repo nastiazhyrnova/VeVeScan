@@ -2,6 +2,7 @@ import rightIcon from '../assets/icons/right.svg';
 import wrongIcon from '../assets/icons/wrong.svg';
 import warningIcon from '../assets/icons/warnning.svg';
 import unknownIcon from '../assets/icons/unknown.svg';
+import leavesIcon from '../assets/icons/leaves-icon.svg';
 
 const findIngredientsByStatus = (ingredients, diet, status) =>
 	ingredients.find(ingredient => ingredient[diet] === status);
@@ -60,10 +61,14 @@ export const getNonDietIngredients = (ingredients, diet) => {
 	});
 };
 
-export const getIcon = (dietState, dietName) => (
+export const getIcon = (dietState, dietName, withLeavesIcon = false) => (
 	<>
 		{dietState === 'yes' && (
-			<img src={rightIcon} alt={dietName} title={dietName} />
+			<img
+				src={withLeavesIcon ? leavesIcon : rightIcon}
+				alt={dietName}
+				title={dietName}
+			/>
 		)}
 		{dietState === 'no' && (
 			<img src={wrongIcon} alt={`No ${dietName}`} title={`No ${dietName}`} />
@@ -85,7 +90,7 @@ export const getIcon = (dietState, dietName) => (
 	</>
 );
 
-export const sortIngredients = (ingredients, diet) => {
+export const sortNonDietaryIngredients = (ingredients, diet) => {
 	const sortOrder = ['no', 'maybe', 'unknown'];
 	const initialIngredients = Object.assign(ingredients);
 	return initialIngredients.sort(

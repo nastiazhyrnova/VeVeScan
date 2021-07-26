@@ -25,7 +25,10 @@
 	background-color: var(--mid-green-color);
 	color: white;
 	cursor: pointer;
-	&:hover {
+	&:hover:enabled {
 		background: var(--gradient-green);
+	}
+	&:disabled {
+		cursor: auto;
 	}
 }

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import Quagga from 'quagga';
 
-import frame from '../../assets/frame.svg';
-import whiteLogo from '../../assets/logo-white.svg';
+import frame from '../assets/frame.svg';
+import whiteLogo from '../assets/logo-white.svg';
 
 const Scanner = props => {
 	const getBarcode = result => {

@@ -1,0 +1,92 @@
+.wrapper {
+	width: 100vw;
+	height: 100vh;
+}
+
+@mixin cardSettings {
+	position: static;
+	@include responsiveContainerCenteredDesktop;
+}
+
+.details {
+	@include responsiveContainerCenteredDesktop;
+
+	margin: 0 auto;
+	&__title-card {
+		@include cardSettings();
+
+		&__header {
+			border-radius: $border-radius;
+		}
+	}
+	&__ingredients-card {
+		@include cardSettings();
+		&__info {
+			padding: 1rem;
+			p {
+				text-align: center;
+				font-size: 0.5rem;
+				color: var(--mid-grey-color);
+			}
+			&__buttons {
+				width: 100%;
+				display: flex;
+				flex-direction: row;
+				cursor: initial;
+				button {
+					flex: 1;
+					width: 100%;
+					display: inline-block;
+					padding: 0.5rem;
+					&:first-child {
+						margin: 0.5rem 0.5rem 0.5rem 0;
+					}
+					&:last-child {
+						margin: 0.5rem 0 0.5rem 0.5rem;
+					}
+					&:hover:enabled {
+						background: var(--mid-green-color);
+						color: white;
+						opacity: 1;
+					}
+				}
+				.inactive {
+					border: 1px solid var(--mid-green-color);
+					color: var(--mid-green-color);
+					background-color: var(--white-color);
+					opacity: 0.3;
+					cursor: pointer;
+				}
+			}
+			ul {
+				// background-color: red;
+				list-style: none;
+				margin-top: 0.5rem;
+				li {
+					color: var(--dark-color);
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					gap: 0.5rem;
+					&:not(:first-child) {
+						margin-top: 0.5rem;
+					}
+					&.no {
+						color: var(--red-color);
+					}
+					&.unknown {
+						color: var(--mid-grey-color);
+					}
+					&.maybe {
+						color: var(--yellow-color);
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: $result-card-breakpoint) {
+	.details {
+		@include responsiveContainerFullMobile;
+	}
+}

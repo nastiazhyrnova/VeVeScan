@@ -13,6 +13,15 @@ $result-card-breakpoint: 532px;
 	margin-left: 1rem;
 }
 
+@mixin responsiveContainerCenteredDesktop {
+	max-width: 500px;
+	left: calc(50vw - 250px);
+}
+
+@mixin responsiveContainerFullMobile {
+	left: 0;
+}
+
 .result {
 	position: relative;
 	height: 100vh;
@@ -48,9 +57,8 @@ $result-card-breakpoint: 532px;
 	}
 	&__card {
 		bottom: 0;
+		@include responsiveContainerCenteredDesktop();
 		margin: 1rem auto;
-		max-width: 500px;
-		left: calc(50vw - 250px);
 	}
 	&__info {
 		padding: 1rem;
@@ -113,10 +121,11 @@ $result-card-breakpoint: 532px;
 
 @media (max-width: $result-card-breakpoint) {
 	.result__card {
+		@include responsiveContainerFullMobile();
 		margin: 1rem;
-		left: 0;
 	}
 	.result__close {
-		left: 0;
+		@include responsiveContainerFullMobile();
+		margin: 1rem;
 	}
 }

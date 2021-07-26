@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
 
-import Card from '../UI/Card';
-import Header from '../UI/Header';
-import Button from '../UI/Button';
+import Card from './UI/Card';
+import Header from './UI/Header';
+import Button from './UI/Button';
+import Ingredients from './Ingredients/Ingredients';
 
 import {
 	checkDietStatus,
 	getIcon,
 	getIngredientsStatus,
-	sortIngredients,
-} from '../../utilities/results';
+	sortNonDietaryIngredients,
+} from '../utilities/results';
 
 const Result = props => {
 	console.log(props.barcode);
@@ -22,6 +23,7 @@ const Result = props => {
 
 	let output = null;
 
+	//load product info
 	useEffect(() => {
 		if (props.barcode) {
 			const fetchData = async barcode => {
@@ -64,6 +66,7 @@ const Result = props => {
 		}
 	}, [props.barcode]);
 
+	//check if Vegan and Vegetarian
 	useEffect(() => {
 		if (allIngredients) {
 			const isVegan = checkDietStatus(allIngredients, 'vegan');
@@ -73,51 +76,23 @@ const Result = props => {
 		}
 	}, [allIngredients]);
 
-	const getIngredientsOutput = (ingredientsList, diet, dietTitle) => {
-		if (allIngredients) {
-			const allNonDietIngredients = ingredientsList.filter(
-				ingredient => ingredient[diet] !== 'yes'
-			);
-
-			return sortIngredients(allNonDietIngredients, diet).map(
-				(ingredient, index) => (
-					<li key={`${index}${ingredient.name}`}>
-						{getIcon(ingredient[diet], dietTitle)} {ingredient.name}
-					</li>
-				)
-			);
-		} else {
-			return <></>;
-		}
-	};
-	const nonVeganIngrOutput = getIngredientsOutput(
-		allIngredients,
-		'vegan',
-		'Vegano'
-	);
-	const nonVegetarianIngrOutput = getIngredientsOutput(
-		allIngredients,
-		'vegetarian',
-		'Vegetariano'
-	);
-
-	const tryAgain = _ => {
-		//TODO  has to rerender Quaqq
+	const resetAll = _ => {
 		props.resetBarcode();
 		setProduct(null);
 		setVegan(null);
 		setVegetarian(null);
-
 		setError(null);
 		setAllIngredients(null);
 	};
 
-	if (product) {
+	const openDetailsPage = _ => props.showDetails(product, allIngredients);
+
+	if (product && allIngredients) {
 		output = (
-			<div className='result'>
+			<>
 				<button
 					className='result__close'
-					onClick={tryAgain}
+					onClick={resetAll}
 					title='Cerrar producto'>
 					<span className='result__close__cross--right'> </span>
 					<span className='result__close__cross--left'></span>
@@ -139,35 +114,43 @@ const Result = props => {
 							</div>
 						</div>
 						<div className='result__info__ingredients'>
-							<ul>{nonVeganIngrOutput}</ul>
-							<ul>{nonVegetarianIngrOutput}</ul>
+							<Ingredients
+								ingredients={allIngredients}
+								diet='vegan'
+								dietTitle='Vegano'
+								onlyNonDietary
+							/>
+							<Ingredients
+								ingredients={allIngredients}
+								diet='vegetarian'
+								dietTitle='Vegetariano'
+								onlyNonDietary
+							/>
 						</div>
-						<Button className='result__info__btn' onClick={_ => {}}>
+						<Button className='result__info__btn' onClick={openDetailsPage}>
 							<p>Ingredientes →</p>
 						</Button>
 					</div>
 				</Card>
-			</div>
+			</>
 		);
 	} else if (error) {
 		output = (
-			<div className='result'>
-				<Card className='result__card'>
-					<Header>
-						<h3>Error</h3>
-					</Header>
-					<div className='result__info'>
-						<h3 className='result__error'>{error}</h3>
-						<Button className='result__error__btn' onClick={tryAgain}>
-							Try again
-						</Button>
-					</div>
-				</Card>
-			</div>
+			<Card className='result__card'>
+				<Header>
+					<h3>Error</h3>
+				</Header>
+				<div className='result__info'>
+					<h3 className='result__error'>{error}</h3>
+					<Button className='result__error__btn' onClick={resetAll}>
+						Try again
+					</Button>
+				</div>
+			</Card>
 		);
 	}
 
-	return <>{output}</>;
+	return <div className='result'>{output}</div>;
 };
 
 export default Result;
