@@ -24,13 +24,14 @@
 	&__frame-container {
 		flex: 3;
 		width: 100%;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		&__frame {
-			padding: 1rem;
-			// width: 90%;
-			max-width: 500px;
+			// padding: 1rem;
+			width: 70%;
+			max-width: 300px;
 			margin: 0 auto;
 		}
 		p {

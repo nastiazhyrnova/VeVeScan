@@ -115,10 +115,17 @@ const Result = props => {
 	if (product) {
 		output = (
 			<div className='result'>
+				<button
+					className='result__close'
+					onClick={tryAgain}
+					title='Cerrar producto'>
+					<span className='result__close__cross--right'> </span>
+					<span className='result__close__cross--left'></span>
+				</button>
 				<Card className='result__card'>
 					<Header>
 						<h3>{product.product_name}</h3>
-						<p>({product.brands})</p>
+						<p>{product.brands && `(${product.brands})`}</p>
 					</Header>
 					<div className='result__info'>
 						<div className='result__info__check'>

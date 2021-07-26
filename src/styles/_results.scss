@@ -1,9 +1,56 @@
+$result-card-breakpoint: 532px;
+
+@mixin crossSettings {
+	content: ' ';
+	width: 0.25rem;
+	height: 2rem;
+	background-color: var(--white-color);
+	display: block;
+	border-radius: 0.5rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin-left: 1rem;
+}
+
 .result {
 	position: relative;
 	height: 100vh;
 	overflow: hidden;
+	&__close {
+		cursor: pointer;
+		background-color: transparent;
+		outline: none;
+		border: none;
+		opacity: 0.5;
+		z-index: 150;
+		position: fixed;
+		left: calc(50vw - 250px);
+		margin: 1rem;
+		text-align: center;
+		display: flex;
+		padding: 0;
+		top: 0;
+		width: 2rem;
+		height: 2rem;
+		span {
+			margin: 0;
+			position: absolute;
+		}
+		&__cross--right::before {
+			@include crossSettings();
+			transform: rotate(45deg);
+		}
+		&__cross--left::after {
+			@include crossSettings();
+			transform: rotate(-45deg);
+		}
+	}
 	&__card {
 		bottom: 0;
+		margin: 1rem auto;
+		max-width: 500px;
+		left: calc(50vw - 250px);
 	}
 	&__info {
 		padding: 1rem;
@@ -61,5 +108,15 @@
 		&__btn {
 			width: 100%;
 		}
+	}
+}
+
+@media (max-width: $result-card-breakpoint) {
+	.result__card {
+		margin: 1rem;
+		left: 0;
+	}
+	.result__close {
+		left: 0;
 	}
 }
