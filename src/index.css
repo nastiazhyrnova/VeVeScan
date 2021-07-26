@@ -28,6 +28,7 @@ html {
   font-size: 16px;
   height: 100vh;
   width: 100vw;
+  min-height: -webkit-fill-available;
 }
 
 body {
@@ -36,12 +37,15 @@ body {
   -webkit-font-smoothing: antialiased !important;
   height: 100vh;
   width: 100vw;
+  min-height: -webkit-fill-available;
   position: fixed;
+  -webkit-overflow-scrolling: touch;
 }
 
 #root {
   height: 100vh;
   width: 100vw;
+  min-height: -webkit-fill-available;
 }
 
 h1 {
@@ -106,6 +110,12 @@ p {
 
 .btn:disabled {
   cursor: auto;
+}
+
+.btn:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .scanner__marker-container {
@@ -355,12 +365,29 @@ p {
 .wrapper {
   width: 100vw;
   height: 100vh;
+  overflow-y: auto;
 }
 
 .details {
   max-width: 500px;
   left: calc(50vw - 250px);
   margin: 0 auto;
+}
+
+.details__go-back-btn {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  margin: 1rem 0 0 1rem;
+  color: var(--mid-grey-color);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.details__go-back-btn:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .details__title-card {
@@ -466,6 +493,48 @@ p {
 
 .details__ingredients-card__info ul li.maybe {
   color: var(--yellow-color);
+}
+
+.details__footer-card {
+  position: static;
+  max-width: 500px;
+  left: calc(50vw - 250px);
+  margin-bottom: 3rem;
+}
+
+.details__footer-card__header {
+  border-radius: 0.5rem;
+  opacity: 0.6;
+}
+
+.details__footer-card__header p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.2rem;
+  font-size: 0.75rem;
+}
+
+.details__footer-card__header p a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.details__footer-card__header p a img {
+  height: 1rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 @media (max-width: 532px) {

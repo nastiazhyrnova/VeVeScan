@@ -1,6 +1,7 @@
 .wrapper {
 	width: 100vw;
 	height: 100vh;
+	overflow-y: auto;
 }
 
 @mixin cardSettings {
@@ -10,8 +11,20 @@
 
 .details {
 	@include responsiveContainerCenteredDesktop;
-
 	margin: 0 auto;
+	&__go-back-btn {
+		outline: none;
+		background-color: transparent;
+		border: none;
+		margin: 1rem 0 0 1rem;
+		color: var(--mid-grey-color);
+		font-size: 0.75rem;
+		cursor: pointer;
+		&:focus {
+			outline: none;
+			box-shadow: none;
+		}
+	}
 	&__title-card {
 		@include cardSettings();
 
@@ -79,6 +92,30 @@
 					}
 					&.maybe {
 						color: var(--yellow-color);
+					}
+				}
+			}
+		}
+	}
+	&__footer-card {
+		@include cardSettings();
+		margin-bottom: 3rem;
+		&__header {
+			border-radius: $border-radius;
+			opacity: 0.6;
+			p {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				gap: 0.2rem;
+				font-size: 0.75rem;
+				a {
+					text-decoration: none;
+					color: inherit;
+					img {
+						height: 1rem;
+						align-self: center;
 					}
 				}
 			}

@@ -4,12 +4,10 @@ import Card from './UI/Card';
 import Header from './UI/Header';
 import Button from './UI/Button';
 import Ingredients from './Ingredients/Ingredients';
+import Footer from './Footer';
 
 const Details = props => {
 	const [chosenDiet, setChosenDiet] = useState('vegan');
-
-	console.log(props.productDetails);
-	console.log(props.productDetails.product.name);
 
 	const toggleDiet = _ => {
 		if (chosenDiet === 'vegan') {
@@ -34,6 +32,9 @@ const Details = props => {
 	return (
 		<div className='wrapper'>
 			<div className='details'>
+				<button className='details__go-back-btn' onClick={props.resetAll}>
+					{'<'} Volver
+				</button>
 				<Card className='details__title-card'>
 					<Header className='details__title-card__header'>
 						<h3>{props.productDetails.product.product_name}</h3>
@@ -66,6 +67,7 @@ const Details = props => {
 						{ingredients}
 					</div>
 				</Card>
+				<Footer />
 			</div>
 		</div>
 	);

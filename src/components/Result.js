@@ -13,8 +13,6 @@ import {
 } from '../utilities/results';
 
 const Result = props => {
-	console.log(props.barcode);
-
 	const [product, setProduct] = useState(null);
 	const [allIngredients, setAllIngredients] = useState(null);
 	const [vegan, setVegan] = useState(null);
@@ -31,7 +29,6 @@ const Result = props => {
 					`https://world.openfoodfacts.org/api/v0/product/${props.barcode}`
 				);
 				const fetchedData = await response.json();
-				console.log(fetchedData);
 
 				if (fetchedData.status === 0) {
 					setError(fetchedData.status_verbose);
@@ -48,7 +45,6 @@ const Result = props => {
 							},
 						]);
 					} else {
-						console.log(typeof fetchedData.product.ingredients);
 						setAllIngredients(
 							getIngredientsStatus(fetchedData.product.ingredients)
 						);

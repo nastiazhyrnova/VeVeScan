@@ -13,9 +13,7 @@ const Main = () => {
 		ingredients: null,
 	});
 
-	console.log(barcode);
-
-	const resetAll = _ => {
+	const resetMain = _ => {
 		setBarcode(null);
 		setScannerActive(true);
 		setShowDetails(false);
@@ -38,8 +36,8 @@ const Main = () => {
 			{!showDetails && (
 				<>
 					<Result
-						barcode={8480017095671}
-						resetBarcode={resetAll}
+						barcode={barcode}
+						resetBarcode={resetMain}
 						showDetails={showDetailsHandler}
 					/>
 					<Scanner
@@ -49,7 +47,9 @@ const Main = () => {
 					/>
 				</>
 			)}
-			{showDetails && <Details productDetails={productDetails} />}
+			{showDetails && (
+				<Details productDetails={productDetails} resetAll={resetMain} />
+			)}
 		</>
 	);
 };
@@ -58,3 +58,5 @@ export default Main;
 
 //nata - 8480017095671
 //maiz - 8480000167644
+//piri piri - 8480000173966
+//cookies - 3560070048939
