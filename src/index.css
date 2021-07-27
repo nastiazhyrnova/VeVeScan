@@ -379,7 +379,7 @@ p {
   background-color: transparent;
   border: none;
   margin: 1rem 0 0 1rem;
-  color: var(--mid-grey-color);
+  color: var(--dark-color);
   font-size: 0.75rem;
   cursor: pointer;
 }
